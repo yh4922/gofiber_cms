@@ -1,4 +1,4 @@
-module gofiber_test
+module gopress
 
 go 1.22.4
 
