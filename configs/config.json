@@ -9,10 +9,10 @@
     // 数据库配置
     "Database": {
         "Driver": "mysql",
-        "Host": "127.0.0.1",
+        "Host": "192.168.3.112",
         "Port": 3306,
         "Database": "gopress",
         "Username": "root",
-        "Password": "root"
+        "Password": "123456"
     }
 }

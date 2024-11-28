@@ -31,7 +31,11 @@ var (
 
 // 初始化
 func init() {
+	// 加载配置
 	setup.SetupConfig()
+
+	// 加载数据库
+	setup.SetupDatabase()
 
 	// 初始化 Fiber 应用
 	App = fiber.New(fiber.Config{
