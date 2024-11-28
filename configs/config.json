@@ -1,0 +1,18 @@
+{
+    // 应用名称
+    "AppName": "GoPress",
+    // 服务配置
+    "Server": {
+        "Host": "192.168.3.44",
+        "Port": 3001
+    },
+    // 数据库配置
+    "Database": {
+        "Driver": "mysql",
+        "Host": "127.0.0.1",
+        "Port": 3306,
+        "Database": "gopress",
+        "Username": "root",
+        "Password": "root"
+    }
+}
