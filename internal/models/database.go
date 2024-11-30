@@ -26,8 +26,14 @@ type ModelTime struct {
 func InitModel() {
 	// 初始化数据表
 	{
+		// 配置
+		g.DB.AutoMigrate(&SysConfig{})
+		// 用户角色
 		g.DB.AutoMigrate(&SysUser{})
 		g.DB.AutoMigrate(&SysRole{})
 		g.DB.AutoMigrate(&SysUserRole{})
+		// 菜单
+		g.DB.AutoMigrate(&SysMenu{})
+		g.DB.AutoMigrate(&SysRoleMenu{})
 	}
 }
