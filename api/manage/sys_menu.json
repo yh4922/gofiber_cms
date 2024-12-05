@@ -1,0 +1,10 @@
+{
+    "/add": {
+        "type": "post",
+        "body": {
+            "title": "string",
+            "type": "string",
+            "name": "string"
+        }
+    }
+}

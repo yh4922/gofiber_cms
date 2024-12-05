@@ -14,7 +14,7 @@ type SysMenu struct {
 	Icon             string `json:"icon" gorm:"size:100;comment:菜单图标"`
 	ActiveIcon       string `json:"activeIcon" gorm:"size:100;comment:菜单高亮图标"`
 	Path             string `json:"path" gorm:"size:100;comment:路由路径"`
-	Status           string `json:"status" gorm:"size:4;comment:状态"`
+	Status           int    `json:"status" gorm:"size:1;comment:状态"` // ENABLE 1   DISABLE 0
 	Redirect         string `json:"redirect" gorm:"size:200;comment:重定向"`
 	Active           string `json:"active" gorm:"size:200;comment:菜单高亮"`
 	Layout           string `json:"layout" gorm:"size:100;comment:布局组件（前端不一定支持预留）"`
@@ -30,36 +30,29 @@ type SysMenu struct {
 }
 
 func init() {
-	s := SysMenu{}
+	// getModelInfo(SysMenu{})
+}
+
+// / 获取模型信息
+func GetModelInfo(s interface{}) {
 	st := reflect.TypeOf(s)
+	len := st.NumField()
 
-	// st.Len()
-
-	// field1 := st.Field(0)
-	// fmt.Printf("json:%v\n", field1.Name)
-	// fmt.Printf("type:%v\n", field1.Type)
-	// fmt.Printf("pkgpath:%v\n", field1.PkgPath)
-
-	// if field1.Anonymous {
-	// 	fmt.Println("field1.Type 是一个嵌入类型")
-	// } else {
-	// 	fmt.Println("field1.Type 不是一个嵌入类型")
-	// }
-
-	len := st.Len()
 	for i := 0; i < len; i++ {
 		field := st.Field(i)
-		fmt.Printf("field:%v\n", field.Name)
+
 		if field.Anonymous {
-			fmt.Println("field1.Type 是一个嵌入类型")
+			/// 嵌入类型
+			subLen := field.Type.NumField()
+			for j := 0; j < subLen; j++ {
+				subField := field.Type.Field(j)
+				fmt.Printf("%v %v\n", subField.Name, subField.Type)
+			}
 		} else {
-			fmt.Println("field1.Type 不是一个嵌入类型")
+			/// 原始类型
+			fmt.Printf("%v %v\n", field.Name, field.Tag.Get("json"))
+			// field.Tag.Get("json")
+
 		}
 	}
-
-	// fmt.Printf("json:%v\n", field1.Tag.Get("json"))
-	// fmt.Printf("xml:%v\n", field1.Tag.Get("xml"))
-
-	// filed2 := st.Field(1)
-	// fmt.Printf("json:%v\n", filed2.Tag.Get("json"))
 }

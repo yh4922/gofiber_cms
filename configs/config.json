@@ -6,6 +6,11 @@
         "Host": "192.168.3.44",
         "Port": 3001
     },
+    // 密码密钥库
+    "PwdSecret": {
+        "Key": "cfd7f1a7bf07b087",
+        "IV": "677a12987376e773"
+    },
     // 数据库配置
     "Database": {
         "Driver": "mysql",
