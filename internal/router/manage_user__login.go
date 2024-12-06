@@ -8,9 +8,9 @@ import (
 
 func init() {
 	routerItem := RouterItem{
-		Path:   "/api/manage/user/login-info",
+		Path:   "/api/manage/user/login",
 		Method: "GET",
-		Func:   ctx.ManageUserLoginInfo,
+		Func:   ctx.ManageUserLogin,
 	}
 
 	routerItem.Middle = []func(c *fiber.Ctx) error{}

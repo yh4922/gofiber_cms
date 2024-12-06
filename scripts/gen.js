@@ -33,6 +33,8 @@ function isReplace(filePath) {
 
 
 (async function () {
+
+    // node .\scripts\gen.js ctx manage/user/loginInfo
     if (args[0] === 'ctx') {
         let ctxPath = args[1]
         let pathList = ctxPath.split('/')
@@ -58,12 +60,14 @@ function isReplace(filePath) {
         fs.writeFileSync(filePath, content)
 
         // 路由名称
-        let routeName = ['/api', ...pathList, _name].join('/')
+        let ___name = _name.replace(/_/g, '-')
+        let routeName = ['/api', ...pathList, ___name].join('/')
         let methodName = (args[2] || 'GET').toLocaleUpperCase()
         let routeTemplate = fs.readFileSync(path.join(__dirname, 'template/router.tmp'), 'utf8')
         let routeContent = routeTemplate.replace(/{{path}}/g, routeName)
             .replace(/{{method}}/g, methodName)
             .replace(/{{name}}/g, ctxName)
+
 
         let routePath = path.join(__dirname, '../', `internal/router/${pathList.join('_')}__${_name}.go`)
         if (fs.existsSync(routePath)) {
