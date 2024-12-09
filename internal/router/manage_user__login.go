@@ -9,7 +9,7 @@ import (
 func init() {
 	routerItem := RouterItem{
 		Path:   "/api/manage/user/login",
-		Method: "GET",
+		Method: "POST",
 		Func:   ctx.ManageUserLogin,
 	}
 

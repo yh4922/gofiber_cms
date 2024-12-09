@@ -5,5 +5,13 @@ import (
 )
 
 func ManageUserPasswordKey(c *fiber.Ctx) error {
-	return c.JSON(fiber.Map{"message": "success"})
+	rsaKey, publicKey, err := GetRsaKey()
+	if err != nil {
+		return c.JSON(CtxError(500, err.Error()))
+	}
+
+	return c.JSON(CtxSuccess(fiber.Map{
+		"key":   rsaKey,
+		"value": publicKey,
+	}))
 }

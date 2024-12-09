@@ -3,9 +3,9 @@ package cmd
 import (
 	"gopress/internal/setup"
 
-	"github.com/gookit/config/v2"
-
 	"github.com/gofiber/fiber/v2"
+	"github.com/gofiber/fiber/v2/middleware/cors"
+	"github.com/gookit/config/v2"
 )
 
 // 错误处理
@@ -42,6 +42,9 @@ func init() {
 		AppName:      config.String("AppName", "GoPress"),
 		ErrorHandler: errorHandler,
 	})
+
+	// 配置跨域
+	App.Use(cors.New())
 
 	// 配置路由
 	setup.SetupRouter(App)
