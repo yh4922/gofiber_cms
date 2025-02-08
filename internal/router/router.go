@@ -12,3 +12,8 @@ type RouterItem struct {
 }
 
 var RouterList = []RouterItem{}
+
+// func init() {
+// 	// Add manage index router list
+// 	RouterList = append(RouterList, RouterList...)
+// }
