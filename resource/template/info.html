@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>用户详情</title>
+        <script src="https://cdn.tailwindcss.com"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+        <script>
+            function toggleTag(element) {
+                element.classList.toggle('bg-blue-500');
+                element.classList.toggle('text-white');
+            }
+        </script>
+    </head>
+    <body class="min-h-screen bg-gray-50">
+        <!-- Hero Section with Cover Image -->
+        <div class="bg-gradient-to-r from-blue-600 to-blue-800 shadow-xl">
+            <div class="max-w-7xl mx-auto px-4 py-12">
+                <div class="flex flex-col md:flex-row items-start gap-8">
+                    <!-- Left Content -->
+                    <div class="flex-1 space-y-6">
+                        <div class="space-y-2">
+                            <h1 class="text-4xl font-bold text-white group-hover:text-blue-200 transition-colors">{{.User.Nickname}}</h1>
+                            <div class="flex items-center gap-3">
+                                <p class="text-xl text-blue-100">@{{.User.Username}}</p>
+                                <span class="px-3 py-1 bg-blue-500/30 text-white rounded-full text-sm animate-pulse">{{if eq .User.Status 1}}在线{{else}}离线{{end}}</span>
+                            </div>
+                        </div>
+                        <div class="space-y-4">
+                            <div class="flex flex-wrap gap-3">
+                                <span class="px-3 py-1 bg-blue-500/30 text-white rounded-full text-sm cursor-pointer hover:bg-blue-400/30" onclick="toggleTag(this)">ID: {{.User.ID}}</span>
+                                <span class="px-3 py-1 bg-blue-500/30 text-white rounded-full text-sm cursor-pointer hover:bg-blue-400/30" onclick="toggleTag(this)">注册时间: {{.User.CreatedAt.Format "2006-01-02"}}</span>
+                                <span class="px-3 py-1 bg-blue-500/30 text-white rounded-full text-sm cursor-pointer hover:bg-blue-400/30" onclick="toggleTag(this)">最近登录: {{.User.UpdatedAt.Format "2006-01-02 15:04"}}</span>
+                            </div>
+                            <p class="text-blue-100 text-sm italic">"这里是用户的个性签名或简介信息"</p>
+                        </div>
+                    </div>
+                    <!-- Right Content -->
+                    <div class="md:w-72 space-y-6">
+                        <div class="flex flex-col gap-4">
+                            <button class="w-full px-4 py-3 bg-green-500 text-white rounded-lg hover:bg-green-600 transition-colors flex items-center justify-center gap-2 group">
+                                <i class="fas fa-play-circle group-hover:animate-pulse"></i> 查看Demo
+                            </button>
+                            <button class="w-full px-4 py-3 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors flex items-center justify-center gap-2 group">
+                                <i class="fas fa-download group-hover:animate-bounce"></i> 下载资源
+                            </button>
+                        </div>
+                        
+                        <div class="bg-white/10 rounded-lg p-4 space-y-3">
+                            <div class="flex justify-between items-center text-white/80">
+                                <span>访问统计</span>
+                                <span class="text-2xl font-bold">1,234</span>
+                            </div>
+                            <div class="flex justify-between items-center text-white/80">
+                                <span>点赞数量</span>
+                                <span class="text-2xl font-bold">567</span>
+                            </div>
+                        </div>
+                        
+                        <div class="flex gap-3">
+                            <button class="flex-1 px-4 py-2 bg-white/10 text-white rounded-lg hover:bg-white/20 transition-colors">
+                                <i class="fas fa-share-alt mr-2"></i> 分享
+                            </button>
+                            <button class="flex-1 px-4 py-2 bg-white/10 text-white rounded-lg hover:bg-white/20 transition-colors">
+                                <i class="fas fa-heart mr-2"></i> 关注
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+                <!-- Main Content Section -->
+                <div class="max-w-7xl mx-auto px-4 py-12">
+                    <div class="bg-white rounded-xl shadow-sm overflow-hidden">
+                        <!-- User Description -->
+                        <div class="border-b border-gray-100">
+                            <div class="px-8 py-6">
+                                <h2 class="text-2xl font-semibold text-gray-900 mb-4">关于用户</h2>
+                                <p class="text-gray-600 leading-relaxed">这是一位优秀的系统用户，注册时间为 {{.User.CreatedAt.Format "2006-01-02"}}。</p>
+                                </div>
+                            </div>
+                            <!-- Detailed Information -->
+                            <div class="grid md:grid-cols-2 gap-8 p-8">
+                                <div class="space-y-6">
+                                    <div>
+                                        <h3 class="text-lg font-medium text-gray-900 mb-3">基本信息</h3>
+                                        <div class="space-y-4">
+                                            <div class="flex items-center gap-4">
+                                                <span class="text-gray-500 min-w-[80px]">用户名</span>
+                                                <span class="text-gray-900">{{.User.Username}}</span>
+                                            </div>
+                                            <div class="flex items-center gap-4">
+                                                <span class="text-gray-500 min-w-[80px]">邮箱</span>
+                                                <span class="text-gray-900">{{.User.Email}}</span>
+                                            </div>
+                            <p class="text-gray-600 leading-relaxed">
+                                这是一段详细的用户介绍内容。可以包含多行文字描述，展示用户的详细信息。
+                            </p>
+                        </div>
+                    </div>
+
+                        <div class="border-t border-gray-100">
+                            <div class="px-8 py-6">
+                                <h3 class="text-xl font-semibold text-gray-900 mb-4">基本资料</h3>
+                                <div class="grid grid-cols-2 gap-6">
+                                    <div class="space-y-4">
+                                        <div class="flex items-center gap-4">
+                                            <span class="text-gray-500 min-w-[80px]">手机</span>
+                                            <span class="text-gray-900">{{.User.Phone}}</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="space-y-6">
+                                <div>
+                                    <h3 class="text-lg font-medium text-gray-900 mb-3">系统信息</h3>
+                                    <div class="space-y-4">
+                                        <div class="flex items-center gap-4">
+                                            <span class="text-gray-500 min-w-[80px]">ID</span>
+                                            <span class="text-gray-900">#{{.User.ID}}</span>
+                                        </div>
+                                        <div class="group">
+                                            <label class="text-sm font-medium text-gray-500 block">电子邮箱</label>
+                                            <div class="mt-1 text-gray-900 group-hover:text-blue-600 transition-colors">{{.User.Email}}</div>
+                                        </div>
+                                    </div>
+                                    <div class="grid gap-4">
+                                        <div class="grid grid-cols-2 gap-4">
+                                            <div>
+                                                <label class="block text-sm font-medium text-gray-500">用户名</label>
+                                                <p class="mt-1 text-gray-900">{{.User.Username}}</p>
+                                            </div>
+                                            <div>
+                                                <label class="block text-sm font-medium text-gray-500">昵称</label>
+                                                <p class="mt-1 text-gray-900">{{.User.Nickname}}</p>
+                                            </div>
+                                        </div>
+                            
+                            <div>
+                                <label class="block text-sm font-medium text-gray-500">邮箱</label>
+                                <p class="mt-1 text-lg text-gray-900">{{.User.Email}}</p>
+                            </div>
+                        </div>
+                        
+                        <div class="space-y-4">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-500">手机号</label>
+                                <p class="mt-1 text-lg text-gray-900">{{.User.Phone}}</p>
+                            </div>
+                            
+                            <div>
+                                <label class="block text-sm font-medium text-gray-500">状态</label>
+                                <p class="mt-1">
+                                    {{if eq .User.Status 1}}
+                                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">
+                                            启用
+                                        </span>
+                                    {{else}}
+                                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-red-100 text-red-800">
+                                            禁用
+                                        </span>
+                                    {{end}}
+                                </p>
+                            </div>
+                            
+                            <div>
+                                <label class="block text-sm font-medium text-gray-500">创建时间</label>
+                                <p class="mt-1 text-lg text-gray-900">{{.User.CreatedAt.Format "2006-01-02 15:04:05"}}</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Bottom Actions -->
+                                    <div class="border-t border-gray-100 px-8 py-4">
+                                        <div class="flex justify-between items-center">
+                                            <button class="px-6 py-2 text-gray-600 hover:bg-gray-50 rounded-lg transition-colors inline-flex items-center gap-2">
+                                                <i class="fas fa-arrow-left"></i> 返回列表
+                                            </button>
+                                            <div class="flex items-center gap-3">
+                                                <button class="px-6 py-2 text-blue-600 hover:bg-blue-50 rounded-lg transition-colors inline-flex items-center gap-2">
+                                                    <i class="fas fa-edit"></i> 编辑
+                                                </button>
+                            <button class="px-4 py-2 text-red-500 hover:bg-red-50 rounded-lg transition-colors duration-200">
+                                <svg class="w-5 h-5 inline-block mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                                </svg>
+                                删除
+                            </button>
+                        </div>
+                        <a href="javascript:history.back()" class="px-6 py-2 bg-gray-100 text-gray-600 rounded-lg hover:bg-gray-200 transition-colors duration-200">
+                            返回
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
