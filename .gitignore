@@ -15,3 +15,41 @@
 
 # Dependency directories (remove the comment below to include it)
 # vendor/
+
+# Clacky configuration files
+.1024*
+!.1024
+.breakpoints
+
+# Go specific files
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+*.test
+*.prof
+__debug_bin
+
+# Framework and build directories
+/tmp/
+/bin/
+/vendor/
+/build/
+
+# Go workspace file
+go.work
+
+# Test binary, built with 'go test -c'
+*.test
+
+# Output of the go coverage tool
+*.out
+*.cover
+
+# Cache directories
+.cache/
+
+# System files
+.DS_Store
+Thumbs.db

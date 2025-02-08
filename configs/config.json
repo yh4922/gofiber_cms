@@ -3,7 +3,7 @@
     "AppName": "GoPress",
     // 服务配置
     "Server": {
-        "Host": "192.168.3.44",
+        "Host": "",
         "Port": 3001
     },
     // 密码密钥库
@@ -14,10 +14,10 @@
     // 数据库配置
     "Database": {
         "Driver": "mysql",
-        "Host": "192.168.3.112",
+        "Host": "mysql.inner.clackypaas.com",
         "Port": 3306,
-        "Database": "gopress",
-        "Username": "root",
-        "Password": "123456"
+        "Database": "gopress", 
+        "Username": "root_fMFIZKvJKyvRmbnvagdL",
+        "Password": "fFIOCbmg"
     }
 }
